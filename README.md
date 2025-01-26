@@ -23,7 +23,7 @@ Follow the steps below to set up the project:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repository/prof-mosquito.git
+   git clone https://github.com/Elfaria-Wistoria/Ai-Assistant-DBD.git
    cd prof-mosquito
    ```
 
