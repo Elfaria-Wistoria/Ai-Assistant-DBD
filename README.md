@@ -1,156 +1,93 @@
-# Prof. Mosquito: Intelligent Chatbot for Mosquito-Related Consultation
+# Prof. Mosquito - Dengue Fever Consultation Chatbot
 
-Prof. Mosquito is a cutting-edge AI-powered chatbot designed to provide professional and user-friendly consultations regarding mosquito-related topics. The chatbot uses advanced machine learning technologies to answer user queries based on a dataset while simulating a conversation with a knowledgeable and friendly doctor.
-
----
+Prof. Mosquito is an AI-powered chatbot designed to provide professional and friendly consultations regarding dengue fever. This project leverages state-of-the-art natural language processing technologies and memory management systems to deliver accurate, dataset-driven responses in a conversational style.
 
 ## Features
 
-- **Interactive Chat Interface**: Engage in a natural and professional conversation.
-- **Dataset-Specific Knowledge**: Provides accurate information solely based on its dataset.
-- **Memory Retention**: Stores conversation history for context-aware replies.
-- **Customizable Responses**: Trained to act as a professional and approachable expert.
-- **Efficient Search**: Retrieves relevant information using vectorized embeddings.
+- **Conversational Expertise**: Prof. Mosquito emulates a professional doctor with a friendly demeanor, focusing on delivering accurate, dataset-based information.
+- **Memory Integration**: Maintains conversational context with a memory buffer for seamless interactions.
+- **Vectorstore Retriever**: Utilizes vector similarity search to retrieve the most relevant information from the dataset.
+- **Customizable Prompts**: Includes tailored prompts for specific chatbot behavior.
+- **Web Integration**: Fully functional Flask-based web interface.
 
----
+## Project Structure
 
-## Tech Stack
-
-### Frameworks & Libraries
-- **Flask**: Backend framework for routing and API handling.
-- **LangChain**: For creating LLM (Large Language Model) chains and memory integration.
-- **Chroma**: Vector database for efficient similarity-based searches.
-- **HuggingFace Transformers**: Embedding generation for vectorized search queries.
-- **Google Generative AI**: For generating conversational responses using `gemini-1.5-flash`.
-- **dotenv**: For managing environment variables.
-
-### Frontend
-- HTML templates rendered through Flask.
-
----
+- `app.py`: The main application file containing the Flask routes and chatbot logic.
+- `templates/`: Directory containing HTML templates for the web interface.
+- `data/`: Directory containing preprocessed dataset files for the vectorstore.
+- `.env`: Environment variables for configuration.
 
 ## Installation
 
-### Prerequisites
-- Python 3.8 or later
-- Virtual environment (optional but recommended)
+Follow the steps below to set up the project:
 
-### Steps
-1. Clone this repository:
+1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/prof-mosquito.git
+   git clone https://github.com/your-repository/prof-mosquito.git
    cd prof-mosquito
    ```
 
-2. Create and activate a virtual environment:
+2. Create a virtual environment and activate it:
    ```bash
    python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
 
-3. Install the dependencies:
+3. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
 4. Set up environment variables in a `.env` file:
    ```env
-   GOOGLE_API_KEY=<your-google-api-key>
-   SECRET_KEY=<your-flask-secret-key>
+   FLASK_APP=app.py
+   FLASK_ENV=development
+   SECRET_KEY=your_secret_key
    ```
 
-5. Start the application:
+5. Start the Flask server:
    ```bash
    flask run
    ```
 
-6. Access the application in your browser at `http://127.0.0.1:5000`.
+The application will be available at `http://127.0.0.1:5000/`.
 
----
+## How It Works
 
-## Usage
+1. **Dataset Retrieval**: The chatbot uses a vectorstore (powered by Chroma and HuggingFace Embeddings) to retrieve information based on the user's queries.
+2. **Language Model**: It utilizes the Google Generative AI (Gemini-1.5-flash) for generating responses.
+3. **Memory Management**: Conversation history is maintained using `ConversationBufferMemory`, ensuring coherent and contextual responses.
+4. **Custom Prompting**: Tailored prompts guide the chatbot to provide dataset-specific, professional, and concise answers.
 
-1. **Chat with Prof. Mosquito**: Navigate to the homepage and enter your queries.
-2. **Manage History**:
-   - **View History**: Displays past interactions.
-   - **Clear History**: Clears session-specific chat history.
+## Key Flask Routes
 
----
+- `/`: Renders the homepage.
+- `/get`: Handles user queries and returns chatbot responses.
+- `/load_history`: Retrieves the conversation history.
+- `/clear_history`: Clears the conversation history.
 
-## Code Structure
+## Example Usage
 
-```plaintext
-prof-mosquito/
-├── app.py                # Main application file
-├── templates/            # HTML templates for the frontend
-│   ├── index.html        # Homepage
-│   └── skinthinc.html    # Additional static page
-├── requirements.txt      # Python dependencies
-├── data/                 # Directory for stored vector embeddings
-├── .env                  # Environment variables
-└── README.md             # Project documentation
-```
+### User Query
+> What are the symptoms of dengue fever?
 
----
-
-## Prompts & Customizations
-
-Prof. Mosquito has been customized with the following characteristics:
-- It avoids responses with bold formatting (`**bold**`) or quotes.
-- The chatbot explicitly states that its knowledge is limited to its dataset.
-- Responses are concise and easy to understand.
-- It introduces itself as "Prof. Mosquito" and maintains a professional yet approachable tone.
-
----
-
-## API Endpoints
-
-### GET `/get`
-- **Description**: Handles user queries and returns a chatbot response.
-- **Parameters**:
-  - `msg`: User's query message.
-- **Response**: JSON object with the chatbot's response.
-
-### GET `/load_history`
-- **Description**: Fetches the conversation history from the session.
-- **Response**: JSON array of past interactions.
-
-### POST `/clear_history`
-- **Description**: Clears the conversation history and memory.
-- **Response**: JSON status message.
-
----
+### Prof. Mosquito's Response
+> Dengue fever typically presents with a high fever, severe headaches, pain behind the eyes, joint and muscle pain, rash, and mild bleeding. Please consult a healthcare professional for an accurate diagnosis.
 
 ## Future Enhancements
 
-- **Multilingual Support**: Extend support for multiple languages.
-- **Advanced Dataset Integration**: Enable dynamic updates to the dataset.
-- **Enhanced Frontend**: Add animations and interactive elements.
-- **Mobile App Version**: Develop a mobile app for wider accessibility.
+- **Improved Dataset Integration**: Expand the dataset for broader and more detailed responses.
+- **Multilingual Support**: Enable responses in multiple languages.
+- **Mobile App**: Develop a mobile version for easier accessibility.
 
----
+## Contribution
 
-## Contributions
-
-We welcome contributions! If you have ideas or suggestions, feel free to open an issue or submit a pull request.
-
----
+Contributions are welcome! Please fork the repository, make your changes, and submit a pull request.
 
 ## License
 
-This project is licensed under the MIT License. See `LICENSE` for more details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
-## Acknowledgements
-
-Special thanks to the creators and maintainers of:
-- LangChain
-- HuggingFace
-- Flask
-- Google Generative AI
-
----
-
-Happy coding with **Prof. Mosquito**!
-
+Feel free to reach out for support or inquiries. Together, let's spread awareness and combat dengue fever with the power of AI!
